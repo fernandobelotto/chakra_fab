@@ -1,20 +1,21 @@
 import { AddIcon, DeleteIcon, EmailIcon, StarIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Center,
-  Fade,
   IconButton,
   SlideFade,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
+import { ColorModeSwitcher } from "./ColorSwitcher";
 
 export function App() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
+    <>
     <Box w="100vw" h="100vh">
-      <Center>
+      <ColorModeSwitcher/>
+      <Box position="absolute" bottom="2" right="2">
         <VStack>
           <SlideFade in={isOpen} offsetY="80px">
             <IconButton aria-label="add" icon={<StarIcon />} />
@@ -27,7 +28,9 @@ export function App() {
           </SlideFade>
           <IconButton onClick={onToggle} aria-label="add" icon={<AddIcon />} />
         </VStack>
-      </Center>
+      </Box>
     </Box>
+    </>
+
   );
 }
